@@ -1,0 +1,49 @@
+<nav class="navbar navbar-dark bg-primary">
+  <div class="container-fluid">
+    <div class="d-flex align-items-center">
+      <a routerLink="/dashboard" class="navbar-brand mb-0 h1">PEAN Stack</a>
+
+      <ul class="navbar-nav flex-row gap-2">
+        <li class="nav-item">
+          <a routerLink="departments" class="nav-link">
+            Departments
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a routerLink="clients" class="nav-link">
+            Clients
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="dropdown">
+      <button type="button" class="btn btn-info btn-sm" data-bs-toggle="dropdown">
+        <span>
+          <i class="fa fa-circle-user me-1"></i> {{user.fullname}}
+        </span>
+
+        <i class="fa fa-caret-down fa-2xs ms-2"></i>
+      </button>
+
+      <ul class="dropdown-menu dropdown-menu-end">
+        <li class="px-3 py-1">
+          <span class="text-dark fw-semibold">{{user.email}}</span>
+        </li>
+
+        <hr class="m-2">
+
+        <li>
+          <button type="button" class="dropdown-item" (click)="authService.logout()">
+            <span>
+              <i class="fa fa-arrow-right-from-bracket"></i>
+              Logout
+            </span>
+          </button>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</nav>

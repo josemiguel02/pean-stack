@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row mt-4 gap-4">
+    <div class="col-md-4">
+      <div class="spinner-border text-success" role="status" *ngIf="isLoadingDepartments; else departments">
+        <span class="sr-only"></span>
+      </div>
+
+      <ng-template #departments>
+        <a routerLink="departments" class="text-decoration-none">
+          <div class="card text-white bg-success mb-3">
+            <div class="card-body">
+              <span><i class="fa fa-building-user fs-4"></i></span>
+              <h4 class="card-title mt-2">Departments</h4>
+              <span class="badge bg-primary rounded-pill">{{departmentsLength}}</span>
+            </div>
+          </div>
+        </a>
+      </ng-template>
+    </div>
+
+    <div class="col-md-4">
+      <div class="spinner-border text-info" role="status" *ngIf="isLoadingClients; else clients">
+        <span class="sr-only"></span>
+      </div>
+
+      <ng-template #clients>
+        <a routerLink="clients" class="text-decoration-none">
+          <div class="card text-white bg-info mb-3">
+            <div class="card-body">
+              <span><i class="fa fa-user fs-4"></i></span>
+              <h4 class="card-title mt-2">Clients</h4>
+              <span class="badge bg-primary rounded-pill">{{clientsLength}}</span>
+            </div>
+          </div>
+        </a>
+      </ng-template>
+    </div>
+  </div>
+</div>

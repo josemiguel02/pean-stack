@@ -1,0 +1,68 @@
+<style>
+  main {
+    min-height: 100vh;
+    background-image: url('../../assets/bg-pattern.svg');
+  }
+</style>
+
+<main>
+  <div class="container">
+    <div class="row py-5">
+      <div class="col-md-6 col-lg-4 mx-auto">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Register</h4>
+
+            <div *ngIf="errors.show" class="alert alert-dismissible alert-danger">
+              <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+              <span class="fw-bold">{{errors.msg}}</span>
+            </div>
+
+            <form (submit)="handleRegister()" class="d-flex gap-3 flex-column mt-4">
+              <div class="form-group">
+                <input type="text" name="fullname" class="form-control" placeholder="Fullname"
+                  [(ngModel)]="user.fullname" [ngClass]="{ 'is-invalid': fieldsErrors.fullname }">
+
+                <div *ngIf="fieldsErrors.fullname" class="invalid-feedback fw-semibold">
+                  {{fieldsErrors.fullname.msg}}
+                </div>
+              </div>
+
+              <div class="form-group">
+                <input type="email" name="email" class="form-control" placeholder="Email" [(ngModel)]="user.email"
+                  [ngClass]="{ 'is-invalid': fieldsErrors.email }">
+
+                <div *ngIf="fieldsErrors.email" class="invalid-feedback fw-semibold">
+                  {{fieldsErrors.email.msg}}
+                </div>
+              </div>
+
+              <div class="form-group">
+                <input type="password" name="password" class="form-control" placeholder="Password"
+                  [(ngModel)]="user.password" [ngClass]="{ 'is-invalid': fieldsErrors.password }">
+
+                <div *ngIf="fieldsErrors.password" class="invalid-feedback fw-semibold">
+                  {{fieldsErrors.password.msg}}
+                </div>
+              </div>
+
+              <span class="d-block mt-2">
+                Already have an account? <a routerLink="/">Login</a>
+              </span>
+
+              <button type="submit" class="btn btn-primary w-100 d-block">
+                Register
+                <span *ngIf="isLoading; else icon" class="spinner-border spinner-border-sm ms-1" role="status"></span>
+
+                <ng-template #icon>
+                  <span class="ms-1"><i class="fa fa-right-to-bracket"></i></span>
+                </ng-template>
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</main>
